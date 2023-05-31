@@ -1,33 +1,31 @@
 package frames;
 
 import javax.swing.*;
+import javax.swing.text.AttributeSet.FontAttribute;
 
 public class settings_frame extends JFrame{
 
     //inputs
     private JTextField pseudo1_TextField;
     private JTextField pseudo2_TextField;
-    private JCheckBox multiPlayers_CheckBox;
     private JComboBox theme_comboBox;
     private JComboBox taille_comboBox;
     
     //buttons
-    private JButton quit_button;
     private JButton validation_button;
     
     //labels
-    private JLabel Title_label;
+    //private JLabel Title_label;
     private JLabel pseudo_1_label;
     private JLabel pseudo_2_label;
     private JLabel theme_label;
     private JLabel taille_label;
 
-
     
 
     public settings_frame(){
         this.setTitle("Memory settings");;
-        this.setSize(340, 440);
+        this.setSize(340, 340);
         BuildFrame();
     }
 
@@ -72,6 +70,10 @@ public class settings_frame extends JFrame{
         add(validation_button);
 
         setLayout(null);
+    }
+
+    void onclick(){
+
     }
     
 }

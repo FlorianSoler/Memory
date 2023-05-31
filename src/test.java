@@ -12,8 +12,8 @@ public class test {
     //     for(int i=0; i<contents.length; i++) {
     //         System.out.println(contents[i]);
     //     }
-    // }
-
+    //}
+    
     settings_frame frame = new settings_frame();
     frame.setVisible(true);
     }
