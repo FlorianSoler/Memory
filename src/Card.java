@@ -1,7 +1,8 @@
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Card {
-    private ImageIcon cardImage;
+    private Icon cardImage;
     private int cardId;
 
     public Card(ImageIcon CardImage, int id){
@@ -9,7 +10,7 @@ public class Card {
         this.cardId = id;
     }
 
-    public ImageIcon getCardImage() {
+    public Icon getCardImage() {
         return cardImage;
     }
 
