@@ -2,7 +2,7 @@ package frames;
 
 import javax.swing.*;
 
-public class settings_frame extends JFrame{
+public class SettingsFrame extends JFrame{
 
     //inputs
     private JTextField pseudo1_TextField;
@@ -22,13 +22,13 @@ public class settings_frame extends JFrame{
 
     
 
-    public settings_frame(){
+    public SettingsFrame(String[] themes, String[] tailles){
         this.setTitle("Memory settings");;
         this.setSize(340, 340);
-        BuildFrame();
+        BuildFrame(themes, tailles);
     }
 
-    private void BuildFrame(){
+    private void BuildFrame(String[] themes, String[] tailles){
 
         pseudo_1_label = new JLabel("Pseudo 1:");
         pseudo_1_label.setBounds(10, 10, 100, 30);
@@ -45,17 +45,18 @@ public class settings_frame extends JFrame{
         theme_label = new JLabel("Thème :");
         theme_label.setBounds(10, 90, 100, 30);
 
-        theme_comboBox = new JComboBox<>(new String[]{"Thème 1", "Thème 2", "Thème 3"});
+        theme_comboBox = new JComboBox<>(themes);
         theme_comboBox.setBounds(120, 90, 150, 30);
 
         taille_label = new JLabel("Taille :");
         taille_label.setBounds(10, 130, 100, 30);
 
-        taille_comboBox = new JComboBox<>(new String[]{"4x5", "5x5", "4x4"});
+        taille_comboBox = new JComboBox<>(tailles);
         taille_comboBox.setBounds(120, 130, 150, 30);
 
-        validation_button = new JButton("Jouer");
-        validation_button.setBounds(120, 170, 100, 30);
+        this.validation_button = new JButton("Jouer");
+        this.validation_button.setBounds(120, 170, 100, 30);
+        this.validation_button.addActionListener(this);
 
         // Ajout des composants à la fenêtre
         add(pseudo_1_label);
@@ -71,8 +72,19 @@ public class settings_frame extends JFrame{
         setLayout(null);
     }
 
-    void onclick(){
-
+    public String getPseudoJ1(){
+        return this.pseudo1_TextField.getText();
     }
-    
+
+    public String getPseudoJ2(){
+        return this.pseudo2_TextField.getText();
+    }
+
+    public String getTaillePlateau(){
+        return this.taille_comboBox.getSelectedItem().toString();
+    }
+
+    public String getTheme(){
+        return this.theme_comboBox.getSelectedItem().toString();
+    }
 }
