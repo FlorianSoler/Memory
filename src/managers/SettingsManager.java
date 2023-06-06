@@ -1,3 +1,4 @@
+package managers;
 
 import java.io.File;
 
@@ -12,11 +13,15 @@ public class SettingsManager {
     private SettingsFrame settingsFrame;
 
 
-    public SettingsManager(){
+    public SettingsManager(GameManager gameManager){
         
-        this.settingsFrame = new SettingsFrame(this.getThemes(), this.getTailles());
+        this.settingsFrame = new SettingsFrame(gameManager, this.getThemes(), this.getTailles());
         this.setVisible(true);
 
+    }
+
+    public void closeWindow() {
+        this.settingsFrame.closeWindow();
     }
 
     private String[] getThemes(){

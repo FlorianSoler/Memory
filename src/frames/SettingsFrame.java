@@ -1,8 +1,11 @@
 package frames;
+import managers.GameManager;
 
 import javax.swing.*;
+import java.awt.event.*;
 
-public class SettingsFrame extends JFrame{
+
+public class SettingsFrame extends JFrame implements ActionListener{
 
     //inputs
     private JTextField pseudo1_TextField;
@@ -20,12 +23,19 @@ public class SettingsFrame extends JFrame{
     private JLabel theme_label;
     private JLabel taille_label;
 
-    
+    //observer
+    private GameManager gameManager;
 
-    public SettingsFrame(String[] themes, String[] tailles){
-        this.setTitle("Memory settings");;
+
+    public SettingsFrame(GameManager gameManager, String[] themes, String[] tailles){
+        this.gameManager = gameManager;
+        this.setTitle("Memory settings");
         this.setSize(340, 340);
         BuildFrame(themes, tailles);
+    }
+
+    public void closeWindow() {
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
     private void BuildFrame(String[] themes, String[] tailles){
@@ -87,4 +97,15 @@ public class SettingsFrame extends JFrame{
     public String getTheme(){
         return this.theme_comboBox.getSelectedItem().toString();
     }
+
+
+
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource() == this.validation_button)
+        {
+            this.gameManager.createPlateau();
+        }
+    }
+
 }
