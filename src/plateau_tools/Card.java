@@ -1,3 +1,4 @@
+package plateau_tools;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
