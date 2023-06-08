@@ -1,16 +1,22 @@
 package managers;
 import plateau_tools.*;
+import frames.*;
 
-import java.util.ArrayList;
+
 
 public class PlateauManager {
-    ArrayList<ButtonCard> buttonList;
+    
     // Score score;
-    Card lastCard;
-    SettingsManager settings;
+    private Card lastCard;
+    private SettingsManager settings;
+    private PlateauFrames plateauFrames;
+    private GameManager gameManager;
+    private Score score;
 
-    public PlateauManager(SettingsManager settings){
+    public PlateauManager(SettingsManager settings, GameManager gameManager){
         this.settings = settings;
-        
+        this.score = new Score(settings.getPseudoJ1(), settings.getPseudoJ2());
+        this.gameManager = new PlateauFrames(null, gameManager) ;
+
     }
 }
