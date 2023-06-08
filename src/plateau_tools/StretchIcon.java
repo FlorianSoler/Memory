@@ -1,3 +1,4 @@
+package plateau_tools;
 /**
  * @(#)StretchIcon.java	1.0 03/27/12
  */
