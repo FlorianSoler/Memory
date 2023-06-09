@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 
 import managers.GameManager;
 import plateau_tools.ButtonCard;
+import plateau_tools.Score;
 
 public class PlateauFrames extends JFrame  {
     
@@ -18,11 +19,11 @@ public class PlateauFrames extends JFrame  {
     private int cols;
 
     //panels
-    private JPanel scorePanel;
+    private ScorePannel scorePanel;
     private JPanel plateauPanel;
 
 
-    public PlateauFrames(GameManager gameManager, ArrayList<ButtonCard> buttonList, JPanel scorePanel, int row, int col) {
+    public PlateauFrames(GameManager gameManager, ArrayList<ButtonCard> buttonList, ScorePannel scorePanel, int row, int col) {
         this.buttonList = buttonList;
         this.gameManager = gameManager;
         this.scorePanel = scorePanel;
@@ -59,9 +60,15 @@ public class PlateauFrames extends JFrame  {
         return gridPanel;
     }
 
-    public void setScorePanel(JPanel scorePanel) {
-        this.scorePanel = scorePanel;
+    private void updatePlateau(){
+        this.getContentPane().removeAll();
         layoutAssembly(scorePanel, plateauPanel);
+    }
+
+    public void setScorePanel(ScorePannel scorePanel) {
+        this.scorePanel = scorePanel;
+        updatePlateau();
+
     }
 
 }
