@@ -12,26 +12,56 @@ import plateau_tools.ButtonCard;
 
 public class PlateauFrames extends JFrame  {
     
+    GameManager gameManager;
     private ArrayList<ButtonCard> buttonList;
+    private int rows;
+    private int cols;
 
-    public PlateauFrames(ArrayList<ButtonCard> buttonList, GameManager gameManager) {
+    //panels
+    private JPanel scorePanel;
+    private JPanel plateauPanel;
+
+
+    public PlateauFrames(GameManager gameManager, ArrayList<ButtonCard> buttonList, JPanel scorePanel, int row, int col) {
         this.buttonList = buttonList;
-        int rows = 4; // Nombre de lignes dans la grille
-        int cols = 5; // Nombre de colonnes dans la grille
-        JPanel gridPanel = new JPanel();
-        gridPanel.setLayout(new GridLayout(rows, cols));
-        
+        this.gameManager = gameManager;
+        this.scorePanel = scorePanel;
+        this.rows=row;
+        this.cols=col;
+        this.setTitle("Plateau");
+        this.plateauPanel = buildPlateau();
+        layoutAssembly(this.scorePanel, this.plateauPanel);
+    }
 
+    private void layoutAssembly(JPanel score, JPanel plateau){
+
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        this.add(score);
+        this.add(plateau);
+        this.pack();
+        this.setVisible(true);
+
+    }
+    
+
+    private JPanel buildPlateau(){
+
+        JPanel gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(this.rows, this.cols));
+        
         for (ButtonCard curButton : buttonList) {
+            curButton.fliped();
+            System.out.println(curButton.getButtonId());
+            curButton.setPreferredSize(new Dimension(200, 200));
             gridPanel.add(curButton);
         }
 
-        // Ajout du panneau de la grille à la fenêtre principale
-        this.getContentPane().add(gridPanel);
+        return gridPanel;
+    }
 
-        // Ajustement de la taille de la fenêtre et affichage
-        this.pack();
-        this.setVisible(true);
+    public void setScorePanel(JPanel scorePanel) {
+        this.scorePanel = scorePanel;
+        layoutAssembly(scorePanel, plateauPanel);
     }
 
 }

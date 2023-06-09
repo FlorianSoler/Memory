@@ -9,9 +9,9 @@ public class ButtonCard extends JButton{
 
     //card
     private Card card;
-    private Icon cardRecto;
+    private StretchIcon cardRecto;
 
-    public ButtonCard(int buttonid, Card card, Icon rectoIcon){
+    public ButtonCard(int buttonid, Card card, StretchIcon rectoIcon){
         this.buttonId = buttonid;
         this.card = card;
         this.cardRecto = rectoIcon;
@@ -25,7 +25,7 @@ public class ButtonCard extends JButton{
 
     public void fliped(){
         this.isVerso = true;
-        this.setIcon(card.getCardImage());
+        this.setIcon(this.card.getCardImage());
     }
 
     public Card getCard() {
