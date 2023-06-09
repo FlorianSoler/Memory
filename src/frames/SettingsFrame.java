@@ -98,8 +98,6 @@ public class SettingsFrame extends JFrame implements ActionListener{
         return this.theme_comboBox.getSelectedItem().toString();
     }
 
-
-
     public void actionPerformed(ActionEvent e)
     {
         if(e.getSource() == this.validation_button)
