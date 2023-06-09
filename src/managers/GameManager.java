@@ -4,7 +4,8 @@ public class GameManager {
     private SettingsManager settings;
 
     public GameManager(){
-        this.settings = new SettingsManager(this);
+        // this needed to lunch createPlateau() on validation
+        this.settings = new SettingsManager(this); 
     }
 
     public void createPlateau(){
@@ -12,6 +13,7 @@ public class GameManager {
         this.settings.closeWindow();
         
         System.out.println(this.settings.getPseudoJ1() + " , " + this.settings.getPseudoJ2());
+        new PlateauManager(settings, this);
     }
 
     
