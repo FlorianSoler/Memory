@@ -13,6 +13,7 @@ public class GameManager {
         this.settings.closeWindow();
         
         System.out.println(this.settings.getPseudoJ1() + " , " + this.settings.getPseudoJ2());
+        new PlateauManager(settings, this);
     }
 
     

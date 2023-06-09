@@ -16,7 +16,8 @@ public class PlateauManager {
     public PlateauManager(SettingsManager settings, GameManager gameManager){
         this.settings = settings;
         this.score = new Score(settings.getPseudoJ1(), settings.getPseudoJ2());
-        this.gameManager = new PlateauFrames(null, gameManager) ;
+        CardProvider cardProvider = new CardProvider(settings.getTheme());
+        this.plateauFrames = new PlateauFrames(cardProvider.GeneratePairs(14), gameManager);
 
     }
 }

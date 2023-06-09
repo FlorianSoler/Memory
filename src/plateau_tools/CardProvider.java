@@ -1,4 +1,4 @@
-package managers;
+package plateau_tools;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import plateau_tools.*;
 
 public class CardProvider {
     private String collectionPath;
@@ -15,8 +14,8 @@ public class CardProvider {
     private static String rectoPath = "src/data/Gui/CardRecto.jpg";
     private Icon cardRecto;
 
-    public CardProvider(String PathCollection){
-        this.collectionPath = PathCollection;
+    public CardProvider(String collectionName){
+        this.collectionPath = "src/data/Collection/" + collectionName;
         this.cardRecto = new ImageIcon(rectoPath);
         LoadImages();
     }
