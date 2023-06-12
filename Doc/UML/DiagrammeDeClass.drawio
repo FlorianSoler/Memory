@@ -12,7 +12,7 @@
                         <mxPoint x="5" y="-16" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="36" value="2,n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="33" vertex="1" connectable="0">
+                <mxCell id="36" value="2, 2n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="33" vertex="1" connectable="0">
                     <mxGeometry x="-0.9089" relative="1" as="geometry">
                         <mxPoint x="-3" y="-7" as="offset"/>
                     </mxGeometry>
@@ -82,6 +82,11 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="159" value="2,2n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FFFFFF;" vertex="1" connectable="0" parent="73">
+                    <mxGeometry x="-0.7556" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="19" value="ButtonCard" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
                     <mxGeometry x="-730" y="700" width="210" height="216" as="geometry">
                         <mxRectangle x="260" y="516" width="120" height="30" as="alternateBounds"/>
@@ -132,7 +137,7 @@
                 <mxCell id="43" value="score : Score" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="41" vertex="1">
                     <mxGeometry y="26" width="200" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="lastCarde : Card" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="41" vertex="1">
+                <mxCell id="44" value="listCarde : Card" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="41" vertex="1">
                     <mxGeometry y="52" width="200" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="119" value="plateauFrame : PlateauFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="41" vertex="1">
@@ -296,8 +301,18 @@
                 <mxCell id="155" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontColor=#FFFFFF;strokeColor=#050505;endArrow=diamondThin;endFill=1;endSize=21;" edge="1" parent="1" source="117" target="119">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
+                <mxCell id="157" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FFFFFF;" vertex="1" connectable="0" parent="155">
+                    <mxGeometry x="-0.7246" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="158" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FFFFFF;" vertex="1" connectable="0" parent="155">
+                    <mxGeometry x="0.5819" y="3" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="117" value="PlateauFrame" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="-360" y="916" width="250" height="106" as="geometry">
+                    <mxGeometry x="-360" y="916" width="250" height="132" as="geometry">
                         <mxRectangle x="260" y="516" width="120" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -307,11 +322,14 @@
                 <mxCell id="123" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="117" vertex="1">
                     <mxGeometry y="52" width="250" height="2" as="geometry"/>
                 </mxCell>
-                <mxCell id="132" value="+ returnCard(ButtonCard) " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="117" vertex="1">
+                <mxCell id="132" value="+ flipCard(ButtonCard) " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="117" vertex="1">
                     <mxGeometry y="54" width="250" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="133" value="+ newScore(ScoreFrame)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="117" vertex="1">
                     <mxGeometry y="80" width="250" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="156" value="+ getButtonList() : List&lt;ButtonCard&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="117">
+                    <mxGeometry y="106" width="250" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="147" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#050505;endArrow=diamondThin;endFill=1;endSize=21;" parent="1" source="134" target="142" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
