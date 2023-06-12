@@ -77,7 +77,7 @@
                 <mxCell id="73" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#050505;endArrow=diamondThin;endFill=1;endSize=21;" parent="1" source="19" target="44" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="74" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="73" connectable="0" vertex="1">
+                <mxCell id="74" value="2,2n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="73" connectable="0" vertex="1">
                     <mxGeometry x="0.6949" y="-3" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
