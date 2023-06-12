@@ -24,8 +24,13 @@ public class ButtonCard extends JButton{
     }
 
     public void fliped(){
-        this.isVerso = true;
-        this.setIcon(this.card.getCardImage());
+        if(this.isVerso == false){
+            this.isVerso = true;
+            this.setIcon(this.card.getCardImage());
+        }else{
+            this.isVerso = false;
+            this.setIcon(this.cardRecto);
+        }
     }
 
     public Card getCard() {

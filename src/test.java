@@ -1,4 +1,3 @@
-
 import javax.swing.JPanel;
 
 import frames.PlateauFrames;
@@ -13,7 +12,7 @@ public class test {
 
         ScorePannel SP = new ScorePannel("MOI", "TOI");
         CardProvider CP = new CardProvider("Birds");
-        PlateauFrames PF = new PlateauFrames(null, CP.GeneratePairs(20), SP, 4, 5);
+        PlateauFrames PF = new PlateauFrames(null, CP.GeneratePairs(36), SP, 6, 5+1);
 
         ScorePannel SP2 = new ScorePannel("MOIAAAAA", "TOAAAAI");
         PF.setScorePanel(SP2);
