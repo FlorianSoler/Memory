@@ -1,17 +1,16 @@
 package plateau_tools;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Card {
-    private Icon cardImage;
+    private StretchIcon cardImage;
     private int cardId;
 
     public Card(ImageIcon CardImage, int id){
-        this.cardImage = CardImage;
+        this.cardImage = new StretchIcon(CardImage.getImage());
         this.cardId = id;
     }
 
-    public Icon getCardImage() {
+    public StretchIcon getCardImage() {
         return cardImage;
     }
 

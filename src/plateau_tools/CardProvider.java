@@ -3,6 +3,8 @@ package plateau_tools;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -12,11 +14,11 @@ public class CardProvider {
     private ArrayList<ImageIcon> loadedImages = new ArrayList<ImageIcon>();
 
     private static String rectoPath = "src/data/Gui/CardRecto.jpg";
-    private Icon cardRecto;
+    private StretchIcon cardRecto;
 
     public CardProvider(String collectionName){
         this.collectionPath = "src/data/Collection/" + collectionName;
-        this.cardRecto = new ImageIcon(rectoPath);
+        this.cardRecto = new StretchIcon(rectoPath);
         LoadImages();
     }
 
@@ -45,14 +47,20 @@ public class CardProvider {
         ArrayList<ButtonCard> buttonCardPairs = new ArrayList<ButtonCard>();
         try{
             //check for evennes
+
+            
+            
             if((NumberOfCard % 2) == 0){
-                for (int i = 0; i < NumberOfCard; i++) {
+                int id = 0;
+                for (int i = 0; i < NumberOfCard/2; i++) {
                     int listIndex = i % loadedImages.size();
-
                     Card card = new Card(loadedImages.get(listIndex), listIndex);
-                    ButtonCard bCard = new ButtonCard(i, card, this.cardRecto);
-
-                    buttonCardPairs.add(bCard);
+                    ButtonCard bCardPair1 = new ButtonCard(id, card, this.cardRecto);
+                    id++;
+                    ButtonCard bCardPair2 = new ButtonCard(i+1, card, this.cardRecto);
+                    id++;
+                    buttonCardPairs.add(bCardPair1);
+                    buttonCardPairs.add(bCardPair2);
                 }
             }
             else{
@@ -62,6 +70,12 @@ public class CardProvider {
         catch(Exception e){
             System.err.println(e);
         }
+        scrambleArrayList(buttonCardPairs);
         return buttonCardPairs;
+    }
+
+    private static void scrambleArrayList(ArrayList<?> list) {
+        // Use the shuffle method from the Collections class
+        Collections.shuffle(list);
     }
 }
