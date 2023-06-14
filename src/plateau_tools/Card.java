@@ -17,4 +17,10 @@ public class Card {
     public int getCardId() {
         return cardId;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        return this.getCardId() == ((Card) obj).getCardId();
+    }
 }

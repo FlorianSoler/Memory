@@ -7,39 +7,73 @@ import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.io.Console;
 
 import managers.GameManager;
+import managers.PlateauManager;
 import plateau_tools.ButtonCard;
 
 public class PlateauFrames extends JFrame implements ActionListener {
     
-    GameManager gameManager;
+    private GameManager gameManager;
+    private PlateauManager plateauManager;
+
     private ArrayList<ButtonCard> buttonList;
     private int rows;
     private int cols;
+
+    //top pannel
+    private JPanel topPanel;
 
     //panels
     private ScorePannel scorePanel;
     private JPanel plateauPanel;
 
+    //exit or setting
+    private JButton exitButton;
 
-    public PlateauFrames(GameManager gameManager, ArrayList<ButtonCard> buttonList, ScorePannel scorePanel, int row, int col) {
-        this.buttonList = buttonList;
+
+    public PlateauFrames(GameManager gameManager, PlateauManager plateauManager, ArrayList<ButtonCard> buttonList, ScorePannel scorePanel, int row, int col) {
+        System.out.println("PlateauFrame atteint");
+        
         this.gameManager = gameManager;
+        this.plateauManager = plateauManager;
+
+        //top pannel creation with score and exit
+        this.topPanel = new JPanel(new GridLayout(2, 1));
+        this.exitButton = new JButton("Exit/Settings");
+        this.exitButton.addActionListener(this);
         this.scorePanel = scorePanel;
+        this.topPanel.add(this.scorePanel);
+        this.topPanel.add(this.exitButton);
+
+        //card pannel creation
+        this.buttonList = buttonList;
         this.rows=row;
         this.cols=col;
         this.setTitle("Plateau");
         this.plateauPanel = buildPlateau();
-        layoutAssembly(this.scorePanel, this.plateauPanel);
+        
+        //all pannel assembly
+        layoutAssembly(this.plateauPanel, this.topPanel);
+        
+        System.out.println("PlateauFrame affiché");
     }
 
-    private void layoutAssembly(JPanel score, JPanel plateau){
+    private void layoutAssembly( JPanel plateau, JPanel topPanel){
+        
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        this.add(score);
+        this.add(topPanel);
         this.add(plateau);
         this.pack();
         this.setVisible(true);
+        for (ButtonCard button : this.buttonList) {
+            System.out.println(button.getButtonId());
+        }
+    }
+
+    public void closeWindow() {
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
     
 
@@ -61,9 +95,11 @@ public class PlateauFrames extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent e)
     {
-        ButtonCard curBC = (ButtonCard) e.getSource();
-        curBC.fliped();
-        System.out.println(curBC.getButtonId());
+        if (this.buttonList.contains(e.getSource())) {
+            this.plateauManager.buttonCardListener((ButtonCard)e.getSource());
+        } else if (e.getSource() == this.exitButton){
+            this.gameManager.returnToSettings();
+        }
     }
 
     public void flipCard(ButtonCard cardbutton){
@@ -76,7 +112,9 @@ public class PlateauFrames extends JFrame implements ActionListener {
 
     public void updatePlateau(){
         this.getContentPane().removeAll();
-        layoutAssembly(scorePanel, plateauPanel);
+        this.topPanel.add(this.scorePanel);
+        this.topPanel.add(this.exitButton);
+        layoutAssembly(plateauPanel, topPanel);
     }
 
     public ArrayList<ButtonCard> getButtonList() {
