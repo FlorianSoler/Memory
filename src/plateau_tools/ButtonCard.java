@@ -33,6 +33,10 @@ public class ButtonCard extends JButton{
         }
     }
 
+    public boolean isVerso() {
+        return isVerso;
+    }
+
     public Card getCard() {
         return card;
     }
@@ -40,4 +44,5 @@ public class ButtonCard extends JButton{
     public int getButtonId() {
         return buttonId;
     }
+
 }

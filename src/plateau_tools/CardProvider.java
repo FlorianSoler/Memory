@@ -57,7 +57,7 @@ public class CardProvider {
                     Card card = new Card(loadedImages.get(listIndex), listIndex);
                     ButtonCard bCardPair1 = new ButtonCard(id, card, this.cardRecto);
                     id++;
-                    ButtonCard bCardPair2 = new ButtonCard(i+1, card, this.cardRecto);
+                    ButtonCard bCardPair2 = new ButtonCard(id, card, this.cardRecto);
                     id++;
                     buttonCardPairs.add(bCardPair1);
                     buttonCardPairs.add(bCardPair2);
