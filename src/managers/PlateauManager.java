@@ -55,7 +55,6 @@ public class PlateauManager {
     }
 
     public void buttonCardListener(ButtonCard buttonCard){
-        //TODO
         if (!buttonCard.isVerso()) {
 
             System.out.println("flip one card");
