@@ -11,11 +11,11 @@ public class Card {
     }
 
     public StretchIcon getCardImage() {
-        return cardImage;
+        return this.cardImage;
     }
 
     public int getCardId() {
-        return cardId;
+        return this.cardId;
     }
 
     @Override
