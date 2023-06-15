@@ -21,8 +21,8 @@ public class ScorePannel extends JPanel {
         this.scoreJ1_label = new JLabel("0");
         this.scoreJ2_label = new JLabel("0");
 
-        this.pseudo_1_label.setBackground(Color.blue);
-        this.pseudo_2_label.setBackground(getBackground());
+        this.pseudo_1_label.setForeground(Color.blue);
+        this.pseudo_2_label.setForeground(getForeground());
 
         this.setLayout(new GridLayout(1, 4));
 
@@ -42,12 +42,12 @@ public class ScorePannel extends JPanel {
     }
 
     public void switchPlayer() {
-        if(this.pseudo_1_label.getBackground() == Color.blue){
-            this.pseudo_1_label.setBackground(this.pseudo_2_label.getBackground());
-            this.pseudo_2_label.setBackground(Color.blue);
+        if(this.pseudo_1_label.getForeground() == Color.blue){
+            this.pseudo_1_label.setForeground(this.pseudo_2_label.getForeground());
+            this.pseudo_2_label.setForeground(Color.blue);
         } else {
-            this.pseudo_2_label.setBackground(this.pseudo_1_label.getBackground());
-            this.pseudo_1_label.setBackground(Color.blue);
+            this.pseudo_2_label.setForeground(this.pseudo_1_label.getForeground());
+            this.pseudo_1_label.setForeground(Color.blue);
         }
     }
 

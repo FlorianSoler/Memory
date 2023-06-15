@@ -2,6 +2,7 @@ package managers;
 import plateau_tools.*;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
 
 import frames.*;
 
@@ -67,12 +68,14 @@ public class PlateauManager {
             if (this.lastCard ==  null) {
                 this.lastCard = buttonCard;
             } else {
-
                 if (this.lastCard.getCard() == buttonCard.getCard()) {
                     this.score.addPoint();
                 } else {
+                    this.plateauFrames.flipCard(buttonCard);
+                    this.plateauFrames.flipCard(this.lastCard);
                     this.score.switchPlayer();
                 }
+                this.lastCard = null;
 
                 this.plateauFrames.setScorePanel(this.score.getScorePannel());
             }
