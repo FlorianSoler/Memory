@@ -26,7 +26,7 @@ public class Card {
      * @return The image of the card.
      */
     public StretchIcon getCardImage() {
-        return cardImage;
+        return this.cardImage;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Card {
      * @return The ID of the card.
      */
     public int getCardId() {
-        return cardId;
+        return this.cardId;
     }
 
     /**

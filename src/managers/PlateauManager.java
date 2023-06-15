@@ -11,20 +11,15 @@ public class PlateauManager {
     
     // Score score;
     private ButtonCard lastCard;
-    private SettingsManager settings;
     private PlateauFrames plateauFrames;
-    private GameManager gameManager;
     private Score score;
     private static Semaphore semaphore1 = new Semaphore(1);
-    private static Semaphore semaphore2 = new Semaphore(1);
-    private static Object LOCK = new Object();
 
     public PlateauManager(SettingsManager settings, GameManager gameManager){
 
         this.lastCard = null;
 
         //creating the score barr
-        this.settings = settings;
         this.score = new Score(settings.getPseudoJ1(), settings.getPseudoJ2());
 
         // TO change => lecture des taille a faire dans un fichier parametrable
@@ -63,7 +58,7 @@ public class PlateauManager {
             if (this.lastCard ==  null) {
                 this.lastCard = buttonCard;
             } else {
-                if (this.lastCard.getCard() == buttonCard.getCard()) {
+                if (this.lastCard.getCard().equals(buttonCard.getCard())) {
                     this.score.addPoint();
                 } else {
                     this.plateauFrames.flipCard(buttonCard);
