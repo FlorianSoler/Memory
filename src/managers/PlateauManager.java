@@ -1,8 +1,8 @@
 package managers;
 import plateau_tools.*;
 
+import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
 
 import frames.*;
 
@@ -15,6 +15,7 @@ public class PlateauManager {
     private PlateauFrames plateauFrames;
     private Score score;
     private static Semaphore semaphore1 = new Semaphore(1);
+    private static Semaphore semaphore2 = new Semaphore(0);
 
     public PlateauManager(SettingsManager settings, GameManager gameManager){
 
@@ -50,31 +51,47 @@ public class PlateauManager {
         this.plateauFrames = new PlateauFrames(gameManager, this, cardProvider.GeneratePairs(taille[0] * taille[1]), this.score.getScorePannel(), taille[0], taille[1]);
     }
 
+    /**
+     * @return the semaphore2
+     */
+    public static void freeSemaphore2() {
+        semaphore2.release();;
+    }
+
     public void buttonCardListener(ButtonCard buttonCard){
-        //TODO
-        System.out.println(buttonCard.getButtonId());
 
-        System.out.println(buttonCard.isVerso());
-        if (!buttonCard.isVerso()) {
+        if (semaphore1.tryAcquire()) {
+            if (!buttonCard.isVerso()) {
 
-            System.out.println("flip one card");
-            this.plateauFrames.flipCard(buttonCard);
+                System.out.println("flip one card id ="+ buttonCard.getButtonId());
+                this.plateauFrames.flipCard(buttonCard);
 
-            if (this.lastCard ==  null) {
-                this.lastCard = buttonCard;
-            } else {
-                if (this.lastCard.getCard().equals(buttonCard.getCard())) {
-                    this.score.addPoint();
+                if (this.lastCard ==  null) {
+                    this.lastCard = buttonCard;
                 } else {
-                    this.plateauFrames.flipCard(buttonCard);
-                    this.plateauFrames.flipCard(this.lastCard);
-                    this.score.switchPlayer();
-                }
-                this.lastCard = null;
+                    if (this.lastCard.getCard().equals(buttonCard.getCard())) {
+                        this.score.addPoint();
+                    } else {
+                        try {
+                            Runnable r = new MyRunnable(this);
+                            new Thread(r).start();
+                            semaphore2.acquire();
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                        this.plateauFrames.flipCard(this.lastCard);
+                        this.plateauFrames.flipCard(buttonCard);
+                        this.score.switchPlayer();
+                    }
+                    this.lastCard = null;
 
-                this.plateauFrames.setScorePanel(this.score.getScorePannel());
+                    this.plateauFrames.setScorePanel(this.score.getScorePannel());
+                }
             }
+            semaphore1.release();;
         }
+        
     }
 
     public void closeWindow() {
