@@ -24,6 +24,7 @@ public class ButtonCard extends JButton{
     }
 
     public void fliped(){
+        System.out.println("card debug " + buttonId + " " + card.getCardId() + " " + card.getCardImage());
         if(this.isVerso == false){
             this.isVerso = true;
             this.setIcon(this.card.getCardImage());

@@ -55,6 +55,7 @@ public class CardProvider {
                 for (int i = 0; i < NumberOfCard/2; i++) {
                     int listIndex = i % loadedImages.size();
                     Card card = new Card(loadedImages.get(listIndex), listIndex);
+                    System.out.println(card.getCardId() + " " + loadedImages.get(listIndex));
                     ButtonCard bCardPair1 = new ButtonCard(id, card, this.cardRecto);
                     id++;
                     ButtonCard bCardPair2 = new ButtonCard(id, card, this.cardRecto);

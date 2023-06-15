@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
-import java.io.Console;
 
 import managers.GameManager;
 import managers.PlateauManager;

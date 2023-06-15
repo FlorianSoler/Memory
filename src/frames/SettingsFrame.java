@@ -1,44 +1,56 @@
 package frames;
+
 import managers.GameManager;
 
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * The SettingsFrame class represents the settings window of the game.
+ * It allows the user to enter player names, select a theme, and choose the size of the game board.
+ */
+public class SettingsFrame extends JFrame implements ActionListener {
 
-public class SettingsFrame extends JFrame implements ActionListener{
-
-    //inputs
+    // inputs
     private JTextField pseudo1_TextField;
     private JTextField pseudo2_TextField;
     private JComboBox theme_comboBox;
     private JComboBox taille_comboBox;
-    
-    //buttons
+
+    // buttons
     private JButton validation_button;
-    
-    //labels
-    //private JLabel Title_label;
+
+    // labels
+    // private JLabel Title_label;
     private JLabel pseudo_1_label;
     private JLabel pseudo_2_label;
     private JLabel theme_label;
     private JLabel taille_label;
 
-    //observer
+    // observer
     private GameManager gameManager;
 
-
-    public SettingsFrame(GameManager gameManager, String[] themes, String[] tailles){
+    /**
+     * Constructs a new SettingsFrame instance.
+     * @param gameManager The game manager instance.
+     * @param themes An array of themes for the theme selection.
+     * @param tailles An array of sizes for the game board selection.
+     */
+    public SettingsFrame(GameManager gameManager, String[] themes, String[] tailles) {
         this.gameManager = gameManager;
         this.setTitle("Memory settings");
         this.setSize(340, 340);
         BuildFrame(themes, tailles);
     }
 
+    /**
+     * Closes the settings window.
+     */
     public void closeWindow() {
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
-    private void BuildFrame(String[] themes, String[] tailles){
+    private void BuildFrame(String[] themes, String[] tailles) {
 
         pseudo_1_label = new JLabel("Pseudo 1:");
         pseudo_1_label.setBounds(10, 10, 100, 30);
@@ -82,26 +94,44 @@ public class SettingsFrame extends JFrame implements ActionListener{
         setLayout(null);
     }
 
-    public String getPseudoJ1(){
+    /**
+     * Retrieves the name of the first player entered in the text field.
+     * @return The name of the first player.
+     */
+    public String getPseudoJ1() {
         return this.pseudo1_TextField.getText();
     }
 
-    public String getPseudoJ2(){
+    /**
+     * Retrieves the name of the second player entered in the text field.
+     * @return The name of the second player.
+     */
+    public String getPseudoJ2() {
         return this.pseudo2_TextField.getText();
     }
 
-    public String getTaillePlateau(){
+    /**
+     * Retrieves the selected size of the game board.
+     * @return The selected size of the game board.
+     */
+    public String getTaillePlateau() {
         return this.taille_comboBox.getSelectedItem().toString();
     }
 
-    public String getTheme(){
+    /**
+     * Retrieves the selected theme.
+     * @return The selected theme.
+     */
+    public String getTheme() {
         return this.theme_comboBox.getSelectedItem().toString();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        if(e.getSource() == this.validation_button)
-        {
+    /**
+     * Handles the action performed event.
+     * @param e The ActionEvent object.
+     */
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == this.validation_button) {
             this.gameManager.createPlateau();
         }
     }

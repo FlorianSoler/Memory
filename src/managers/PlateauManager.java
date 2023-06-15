@@ -2,7 +2,6 @@ package managers;
 import plateau_tools.*;
 
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
 
 import frames.*;
 
@@ -57,9 +56,6 @@ public class PlateauManager {
 
     public void buttonCardListener(ButtonCard buttonCard){
         //TODO
-        System.out.println(buttonCard.getButtonId());
-
-        System.out.println(buttonCard.isVerso());
         if (!buttonCard.isVerso()) {
 
             System.out.println("flip one card");
