@@ -55,7 +55,7 @@ public class PlateauManager {
      * @return the semaphore2
      */
     public static void freeSemaphore2() {
-        semaphore2.release();;
+        semaphore2.release();
     }
 
     public void buttonCardListener(ButtonCard buttonCard){
