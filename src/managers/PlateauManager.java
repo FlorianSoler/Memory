@@ -85,15 +85,38 @@ public class PlateauManager {
                     this.lastCard = null;
 
                     this.plateauFrames.setScorePanel(this.score.getScorePannel());
+                    this.testFinDeJeu();
                 }
             }
-            semaphore1.release();;
+            semaphore1.release();
         }
         
     }
 
     public void closeWindow() {
         this.plateauFrames.closeWindow();
+    }
+
+    private void testFinDeJeu(){
+
+        boolean finDeJeu = true;
+        for (ButtonCard buttonCard : this.plateauFrames.getButtonList()) {
+            if (! buttonCard.isVerso()) {
+                System.out.print("verso");
+                finDeJeu = false;
+            }            
+        }
+        if (finDeJeu) {
+            String message;
+            if (this.score.getScoreJ1() == this.score.getScoreJ2()) {
+                message = this.score.getPseudoJ1() + " et " + this.score.getPseudoJ2() + " ont fait ex aequo avec "+ this.score.getScoreJ1()+ " points";
+            } else if (this.score.getScoreJ1() > this.score.getScoreJ2()){
+                message = this.score.getPseudoJ1() + " a gagne avec "+ this.score.getScoreJ1()+ " points";
+            } else {
+                message = this.score.getPseudoJ2() + " a gagne avec "+ this.score.getScoreJ2()+ " points";
+            }
+            this.plateauFrames.setMessagePannel(new EndGamePannel(message));
+        }
     }
 
 

@@ -30,6 +30,7 @@ public class PlateauFrames extends JFrame implements ActionListener {
 
     // panels
     private ScorePannel scorePanel;
+    private EndGamePannel endGamePannel;
     private JPanel plateauPanel;
 
     // exit or setting
@@ -48,8 +49,8 @@ public class PlateauFrames extends JFrame implements ActionListener {
      */
     public PlateauFrames(GameManager gameManager, PlateauManager plateauManager, ArrayList<ButtonCard> buttonList,
             ScorePannel scorePanel, int row, int col) {
-        System.out.println("PlateauFrame atteint");
-
+        
+        this.endGamePannel = null;
         this.gameManager = gameManager;
         this.plateauManager = plateauManager;
 
@@ -133,9 +134,16 @@ public class PlateauFrames extends JFrame implements ActionListener {
      */
     public void updatePlateau() {
         this.getContentPane().removeAll();
-        this.topPanel.add(this.scorePanel);
-        this.topPanel.add(this.exitButton);
+        if (this.endGamePannel == null) { //not the end of the game
+            this.topPanel.add(this.scorePanel);
+            this.topPanel.add(this.exitButton);
+        } else { //end message shown
+            this.topPanel = new JPanel(new GridLayout(2, 1));
+            this.topPanel.add(this.endGamePannel);
+            this.topPanel.add(this.exitButton);
+        }
         layoutAssembly(plateauPanel, topPanel);
+        
     }
 
     /**
@@ -144,7 +152,7 @@ public class PlateauFrames extends JFrame implements ActionListener {
      * @return The list of ButtonCard instances.
      */
     public ArrayList<ButtonCard> getButtonList() {
-        return buttonList;
+        return this.buttonList;
     }
 
     /**
@@ -154,6 +162,10 @@ public class PlateauFrames extends JFrame implements ActionListener {
      */
     public void setScorePanel(ScorePannel scorePanel) {
         this.scorePanel = scorePanel;
+        updatePlateau();
+    }
+    public void setMessagePannel(EndGamePannel endGamePannel) {
+        this.endGamePannel = endGamePannel;
         updatePlateau();
     }
 }
