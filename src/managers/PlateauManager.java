@@ -101,7 +101,8 @@ public class PlateauManager {
 
         boolean finDeJeu = true;
         for (ButtonCard buttonCard : this.plateauFrames.getButtonList()) {
-            if (buttonCard.isVerso()) {
+            if (! buttonCard.isVerso()) {
+                System.out.print("verso");
                 finDeJeu = false;
             }            
         }
@@ -114,7 +115,7 @@ public class PlateauManager {
             } else {
                 message = this.score.getPseudoJ2() + " a gagne avec "+ this.score.getScoreJ2()+ " points";
             }
-            this.plateauFrames.setScorePanel(new EndGamePannel(message));
+            this.plateauFrames.setMessagePannel(new EndGamePannel(message));
         }
     }
 
