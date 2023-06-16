@@ -33,7 +33,7 @@ public class SettingsManager {
     }
 
     private String[] getTailles() {
-        return new String[]{"4x5", "5x5", "4x4"};
+        return new String[]{"4x5", "5x6", "4x4"};
     }
 
     public void getValuesFromView() {

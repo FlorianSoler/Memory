@@ -33,8 +33,8 @@ public class PlateauManager {
                 taille = new int[]{4,5};
                 break;
             
-            case "5x5":
-                taille = new int[]{5,5};
+            case "5x6":
+                taille = new int[]{5,6};
                 break;
             
             case "4x4":
