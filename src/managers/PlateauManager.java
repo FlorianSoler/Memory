@@ -59,10 +59,8 @@ public class PlateauManager {
     }
 
     public void buttonCardListener(ButtonCard buttonCard){
-
         if (semaphore1.tryAcquire()) {
             if (!buttonCard.isVerso()) {
-
                 System.out.println("flip one card id ="+ buttonCard.getButtonId());
                 this.plateauFrames.flipCard(buttonCard);
 
