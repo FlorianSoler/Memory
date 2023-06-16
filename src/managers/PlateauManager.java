@@ -14,8 +14,8 @@ public class PlateauManager {
     private ButtonCard lastCard;
     private PlateauFrames plateauFrames;
     private Score score;
-    private static Semaphore semaphore1 = new Semaphore(1);
-    private static Semaphore semaphore2 = new Semaphore(0);
+    private static Semaphore semaphore1 = new Semaphore(1); // un clique traiter a la fois
+    private static Semaphore semaphore2 = new Semaphore(0); // timer de 2 secondes avant de reretourner les non paires
 
     public PlateauManager(SettingsManager settings, GameManager gameManager){
 
@@ -52,9 +52,10 @@ public class PlateauManager {
     }
 
     /**
-     * @return the semaphore2
+     * alows to click on a card after 2 seconds
      */
     public static void freeSemaphore2() {
+
         semaphore2.release();
     }
 
