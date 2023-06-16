@@ -29,7 +29,7 @@ public class PlateauFrames extends JFrame implements ActionListener {
     private JPanel topPanel;
 
     // panels
-    private ScorePannel scorePanel;
+    private JPanel scorePanel;
     private JPanel plateauPanel;
 
     // exit or setting
@@ -152,7 +152,7 @@ public class PlateauFrames extends JFrame implements ActionListener {
      * 
      * @param scorePanel The ScorePannel instance.
      */
-    public void setScorePanel(ScorePannel scorePanel) {
+    public void setScorePanel(JPanel scorePanel) {
         this.scorePanel = scorePanel;
         updatePlateau();
     }
