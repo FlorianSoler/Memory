@@ -37,6 +37,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
      * @param tailles An array of sizes for the game board selection.
      */
     public SettingsFrame(GameManager gameManager, String[] themes, String[] tailles) {
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.gameManager = gameManager;
         this.setTitle("Memory settings");
         this.setSize(340, 340);

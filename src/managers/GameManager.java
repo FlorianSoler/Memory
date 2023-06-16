@@ -21,8 +21,8 @@ public class GameManager {
      */
     public void createPlateau() {
         this.settings.getValuesFromView();
+        System.out.println("valeurs récupéré");
         this.settings.closeWindow();
-        
         System.out.println(this.settings.getPseudoJ1() + " , " + this.settings.getPseudoJ2());
         this.plateauManager = new PlateauManager(settings, this);
     }

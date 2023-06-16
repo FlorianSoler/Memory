@@ -48,6 +48,8 @@ public class PlateauFrames extends JFrame implements ActionListener {
      */
     public PlateauFrames(GameManager gameManager, PlateauManager plateauManager, ArrayList<ButtonCard> buttonList,
             ScorePannel scorePanel, int row, int col) {
+        
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         System.out.println("PlateauFrame atteint");
 
         this.gameManager = gameManager;
