@@ -81,9 +81,6 @@ public class PlateauFrames extends JFrame implements ActionListener {
         this.add(plateau);
         this.pack();
         this.setVisible(true);
-        for (ButtonCard button : this.buttonList) {
-            System.out.println(button.getButtonId());
-        }
     }
 
     /**
@@ -101,7 +98,6 @@ public class PlateauFrames extends JFrame implements ActionListener {
         for (ButtonCard curButton : buttonList) {
 
             curButton.addActionListener(this);
-            System.out.println(curButton.getButtonId());
             curButton.setPreferredSize(new Dimension(150, 150));
             gridPanel.add(curButton);
         }
@@ -129,6 +125,7 @@ public class PlateauFrames extends JFrame implements ActionListener {
                 curButton.fliped();
             }
         }
+        this.update(getGraphics());
     }
 
     /**
